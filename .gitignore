@@ -1,0 +1,28 @@
+# IDEs
+.idea/
+
+#Virtualenv
+env/
+
+# Local dev environment
+settings/local.py
+
+# Databases
+*.db
+db.*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+*.log.*
+
+# Generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.swo
