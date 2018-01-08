@@ -1,0 +1,92 @@
+[
+{
+    "model": "core.highereducationinstitution",
+    "pk": "2425ee1e-0c48-4231-b3c5-58a210a80888",
+    "fields": {
+        "name": "University of Alcal\u00e1 Henares",
+        "email": "uah@uah.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "7ed7b4dc-b964-4c2b-bd87-f7237a6ec06a",
+    "fields": {
+        "name": "University Rey Juan Carlos of Vic\u00e1lvaro",
+        "email": "rjcv@rjcv.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "8d378719-d061-4aef-b85f-ade9f4816cb4",
+    "fields": {
+        "name": "University Rey Juan Carlos of M\u00f3stoles",
+        "email": "rjcm@rjcm.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "979c693a-5dd0-49ae-9d15-7df253a5e598",
+    "fields": {
+        "name": "University Polit\u00e9cnica of Madrid",
+        "email": "upm@upm.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "a16989bd-4568-4e23-b559-0fd159d354b7",
+    "fields": {
+        "name": "University Aut\u00f3noma",
+        "email": "uam@uam.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "76a6d707-4ba7-4962-8d69-700a93e3e738",
+    "fields": {
+        "name": "University Alfonso X El Sabio",
+        "email": "uaxs@uaxs.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "a9696808-d866-4fad-8a71-04ee7904a85c",
+    "fields": {
+        "name": "University Complutense",
+        "email": "ucm@ucm.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "798b7782-01d2-47cc-9246-def14f0ff6c0",
+    "fields": {
+        "name": "University San Pablo CEU",
+        "email": "uceu@uceu.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "2e918603-e36e-4da5-b22d-84e94ef1667b",
+    "fields": {
+        "name": "University Carlos III",
+        "email": "uc3@uc3.es",
+        "origin": null
+    }
+},
+{
+    "model": "core.highereducationinstitution",
+    "pk": "cbb2ec36-e999-4f4d-9955-972f9912d550",
+    "fields": {
+        "name": "University Europea of Madrid",
+        "email": "uem@uem.es",
+        "origin": null
+    }
+}
+]
