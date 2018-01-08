@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'rest_framework_swagger',
+    'core',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -125,11 +128,34 @@ STATIC_URL = '/static/'
 # Swagger Settings
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
+    'DOC_EXPANSION': 'full',
     'SECURITY_DEFINITIONS': {
         'token': {
             'type': 'apiKey',
             'name': 'AUTHORIZATION',
             'in': 'header',
         }
+    },
+}
+
+
+REST_FRAMEWORK = {
+    'SEARCH_PARAM': 'q',
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '1000/s',
+        'user': '10000/s',
     },
 }

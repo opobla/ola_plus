@@ -1,5 +1,25 @@
 from rest_framework import serializers
+from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
 
 
-class TestSerializer(serializers.Serializer):
-    pass
+class HigherEducationInstitutionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = HigherEducationInstitution
+        fields = '__all__'
+
+
+class OrganizationalUnitSerializer(serializers.ModelSerializer):
+    higher_education_institution = HigherEducationInstitutionSerializer()
+
+    class Meta:
+        model = OrganizationalUnit
+        fields = '__all__'
+
+
+class LearningOpportunitySpecificationSerializer(serializers.ModelSerializer):
+    organizational_unit = OrganizationalUnitSerializer()
+
+    class Meta:
+        model = LearningOpportunitySpecification
+        fields = '__all__'

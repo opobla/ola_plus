@@ -1,11 +1,9 @@
-from django.conf.urls import url
+from django.urls.conf import path
+
 from api import views
 
 
 urlpatterns = [
-    url(r'^$', views.TestViewSet.as_view({
-        'get': 'list',
-        'post': 'create',
-
-    })),
+    path('hei', views.HEIModelViewSet.as_view({'get': 'list'})),
+    path('los/hei/<uuid:id>', views.LOSModelViewSet.as_view({'get': 'list'}))
 ]
