@@ -17,7 +17,6 @@ class Command(BaseCommand):
                 "name": fixture_name,
                 "applied": False,
                 "retries": 0,
-
             })
         return fixtures
 
