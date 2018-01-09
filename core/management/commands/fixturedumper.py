@@ -3,7 +3,6 @@ import inspect
 from django.core.management.base import BaseCommand
 from django.core.serializers import serialize
 from core import models as core_models
-import sys
 
 
 class Command(BaseCommand):
@@ -23,7 +22,7 @@ class Command(BaseCommand):
                 if model_name[0] != 'BaseModel']
 
     def handle(self, *args, **options):
-        sys.stdout.write('\n')
+        self.stdout.write('\n')
         for model_name in self.get_models():
             self.dump(model_name, 'core', self.get_json_filename(model_name))
 

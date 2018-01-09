@@ -25,4 +25,4 @@ class Command(BaseCommand):
                 self.stdout.write("Fixture for: " + fixture)
                 call_command('loaddata', fixture)
             except IntegrityError as e:
-                self.stdout.write("Fixture: " + fixture + " FAILED", e.args)
+                self.stderr.write("Fixture: " + fixture + " [ FAILED ]", e.args)
