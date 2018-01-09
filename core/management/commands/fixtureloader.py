@@ -11,7 +11,15 @@ class Command(BaseCommand):
         pass
 
     def get_fixtures(self):
-        return glob("core/fixtures/*.json")
+        fixtures = []
+        for fixture_name in glob("core/fixtures/*.json"):
+            fixtures.append({
+                "name": fixture_name,
+                "applied": False,
+                "retries": 0,
+
+            })
+        return fixtures
 
     def handle(self, *args, **options):
         if options["settings"] == "ola_plus.settings.production":
@@ -19,10 +27,21 @@ class Command(BaseCommand):
             if fix != "Y":
                 self.stderr.write("Operation cancelled.")
                 return False
-
-        for fixture in self.get_fixtures():
-            try:
-                self.stdout.write("Fixture for: " + fixture)
-                call_command('loaddata', fixture)
-            except IntegrityError as e:
-                self.stderr.write("Fixture: " + fixture + " [ FAILED ]", e.args)
+        fixtures = self.get_fixtures()
+        while [fixture for fixture in fixtures if not fixture["applied"]]:
+            for fixture in fixtures:
+                if fixture["applied"]:
+                    continue
+                try:
+                    self.stdout.write("Loading fixture " + fixture["name"])
+                    call_command("loaddata", fixture["name"])
+                    self.stdout.write("")
+                    fixture["applied"] = True
+                    fixture["retries"] = 0
+                except IntegrityError as e:
+                    self.stderr.write("[ FAILED ] Fixture " + fixture["name"] + ": " + e.args[0])
+                    self.stdout.write("\tIt will be retried later...")
+                    fixture["retries"] += 1
+            if any(fixture["retries"] >= 5 for fixture in fixtures):
+                self.stderr.write("Couldn't load all fixtures.")
+                break
