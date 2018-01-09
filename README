@@ -5,3 +5,4 @@
 > echo "from .base import *" > ola_plus/settings/local.py
 > python manage.py migrate --settings=ola_plus.settings.local
 > python manage.py runserver --settings=ola_plus.settings.local
+> python manage.py fixtureloader --settings=ola_plus.settings.local
