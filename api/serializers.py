@@ -10,7 +10,6 @@ class HigherEducationInstitutionSerializer(serializers.ModelSerializer):
 
 
 class OrganizationalUnitSerializer(serializers.ModelSerializer):
-    higher_education_institution = HigherEducationInstitutionSerializer()
 
     class Meta:
         model = OrganizationalUnit
