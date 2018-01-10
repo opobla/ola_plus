@@ -7,10 +7,19 @@ admin.site.site_title = 'OLA+ Admin'
 admin.site.index_title = 'OLA+ Admin'
 
 
+class OrganizationalUnitInLineAdmin(admin.TabularInline):
+    ordering = ['name']
+    search_fields = ['name']
+    autocomplete_fields = ['parent', 'higher_education_institution']
+    model = models.OrganizationalUnit
+    min_num = 1
+
+
 class HigherEducationInstitutionAdmin(admin.ModelAdmin):
     ordering = ['name']
     search_fields = ['name']
     autocomplete_fields = ['origin']
+    inlines = [OrganizationalUnitInLineAdmin, ]
 
 
 class HigherEducationInstitutionOriginAdmin(admin.ModelAdmin):
