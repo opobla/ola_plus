@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from rest_framework.filters import SearchFilter
 from . import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
 
@@ -11,9 +10,13 @@ class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
     Dynamic title filter can be added with `q` parameter.
     """
     serializer_class = serializers.HigherEducationInstitutionSerializer
-    queryset = HigherEducationInstitution.objects.all().order_by('name')
-    filter_backends = (SearchFilter, )
-    search_fields = ('^name', )
+
+    def get_queryset(self):
+        q = self.request.query_params.get('q', None)
+        queryset = HigherEducationInstitution.objects.all().order_by('name')
+        if q:
+            return queryset.filter(name__icontains=q)
+        return queryset
 
 
 class OrganizationalUnitViewSet(viewsets.ModelViewSet):
@@ -21,12 +24,19 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
     Organizational Unit List.
 
     It's mandatory to indicate a hei's uuid.
+
     Dynamic title filter can be added with `q` parameter.
     """
     serializer_class = serializers.OrganizationalUnitSerializer
-    queryset = OrganizationalUnit.objects.all().order_by('name')
-    filter_backends = (SearchFilter, )
-    search_fields = ('^name', )
+
+    def get_queryset(self):
+        q = self.request.query_params.get('q', None)
+        queryset = OrganizationalUnit.objects.all()\
+            .filter(higher_education_institution_id=self.kwargs["id"])\
+            .order_by('name')
+        if q:
+            return queryset.filter(name__icontains=q)
+        return queryset
 
 
 class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
@@ -34,9 +44,16 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
     Learning Opportunity Specification List.
 
     It's mandatory to indicate a hei's uuid.
+
     Dynamic title filter can be added with `q` parameter.
     """
     serializer_class = serializers.LearningOpportunitySpecificationSerializer
-    queryset = LearningOpportunitySpecification.objects.all().order_by('title')
-    filter_backends = (SearchFilter, )
-    search_fields = ('^title', )
+
+    def get_queryset(self):
+        queryset = LearningOpportunitySpecification.objects.all() \
+            .filter(organizational_unit_id=self.kwargs["id"]) \
+            .order_by('title')
+        q = self.request.query_params.get('q', None)
+        if q:
+            return queryset.filter(title__icontains=q)
+        return queryset

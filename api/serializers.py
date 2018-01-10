@@ -17,7 +17,6 @@ class OrganizationalUnitSerializer(serializers.ModelSerializer):
 
 
 class LearningOpportunitySpecificationSerializer(serializers.ModelSerializer):
-    organizational_unit = OrganizationalUnitSerializer()
 
     class Meta:
         model = LearningOpportunitySpecification
