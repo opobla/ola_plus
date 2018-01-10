@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 # Swagger Settings
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
-    'DOC_EXPANSION': 'full',
+    'DOC_EXPANSION': 'list',
     'SECURITY_DEFINITIONS': {
         'token': {
             'type': 'apiKey',
