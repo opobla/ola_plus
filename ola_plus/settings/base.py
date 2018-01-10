@@ -159,3 +159,5 @@ REST_FRAMEWORK = {
         'user': '10000/s',
     },
 }
+
+STATIC_ROOT='static'

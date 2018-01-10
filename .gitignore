@@ -26,3 +26,6 @@ __pycache__/
 *.swp
 *.out
 *.swo
+
+static
+www
