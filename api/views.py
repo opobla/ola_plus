@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from . import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
 
@@ -7,53 +7,47 @@ class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
     """
     Higher Education Institution List.
 
-    Dynamic title filter can be added with `q` parameter.
+    Dynamic Higher Education Institution's name filter can be added with `q` parameter.
     """
     serializer_class = serializers.HigherEducationInstitutionSerializer
-
-    def get_queryset(self):
-        q = self.request.query_params.get('q', None)
-        queryset = HigherEducationInstitution.objects.all().order_by('name')
-        if q:
-            return queryset.filter(name__icontains=q)
-        return queryset
+    queryset = HigherEducationInstitution.objects.all().order_by('name')
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', )
 
 
 class OrganizationalUnitViewSet(viewsets.ModelViewSet):
     """
     Organizational Unit List.
 
-    It's mandatory to indicate a hei's uuid.
+    **It's mandatory to provide an Higher Education Institution UUID.**
 
-    Dynamic title filter can be added with `q` parameter.
+    Dynamic Organizational Unit's name filter can be added with `q` parameter.
     """
     serializer_class = serializers.OrganizationalUnitSerializer
+    queryset = OrganizationalUnit.objects.all()
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', )
 
     def get_queryset(self):
-        q = self.request.query_params.get('q', None)
-        queryset = OrganizationalUnit.objects.all()\
-            .filter(higher_education_institution_id=self.kwargs["id"])\
+        return self.queryset\
+            .filter(higher_education_institution_id=self.kwargs["id"]) \
             .order_by('name')
-        if q:
-            return queryset.filter(name__icontains=q)
-        return queryset
 
 
 class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
     """
     Learning Opportunity Specification List.
 
-    It's mandatory to indicate a hei's uuid.
+    **It's mandatory to provide an Organizational Unit UUID.**
 
-    Dynamic title filter can be added with `q` parameter.
+    Dynamic Learning Opportunity Specification's title filter can be added with `q` parameter.
     """
     serializer_class = serializers.LearningOpportunitySpecificationSerializer
+    queryset = LearningOpportunitySpecification.objects.all().order_by('title')
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('title', )
 
     def get_queryset(self):
-        queryset = LearningOpportunitySpecification.objects.all() \
+        return self.queryset \
             .filter(organizational_unit_id=self.kwargs["id"]) \
             .order_by('title')
-        q = self.request.query_params.get('q', None)
-        if q:
-            return queryset.filter(title__icontains=q)
-        return queryset
