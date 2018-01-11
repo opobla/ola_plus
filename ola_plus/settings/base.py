@@ -160,4 +160,4 @@ REST_FRAMEWORK = {
     },
 }
 
-STATIC_ROOT='static'
+STATIC_ROOT = 'static'
