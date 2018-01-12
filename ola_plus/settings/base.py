@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'core',
     'api',
+    'django_loader_dumper',
 ]
 
 MIDDLEWARE = [
