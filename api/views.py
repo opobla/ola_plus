@@ -5,9 +5,17 @@ from core.models import HigherEducationInstitution, LearningOpportunitySpecifica
 
 class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
     """
-    Higher Education Institution List.
+    Higher Education Institutions.
 
-    Dynamic Higher Education Institution's name filter can be added with `q` parameter.
+    create:
+    Create a new HEI by giving a name and a email (do not specify origin)
+
+    list:
+    This endpoint retrieves all the available HEI's.
+    Since the list can be potentially very long, it is possible to filter this list by giving a URL parameter q with
+    a text string. The list then will contain only HEI's whose names include the given text string. Note that demo
+    version only supports filtering for HEI's whose names _start_ with the given text string.
+
     """
     serializer_class = serializers.HigherEducationInstitutionSerializer
     queryset = HigherEducationInstitution.objects.all().order_by('name')
