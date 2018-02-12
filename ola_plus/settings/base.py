@@ -25,7 +25,7 @@ SECRET_KEY = 'c^brxtvc+n!21px1mxr!ksn9rq8kp8l=51ko1915!8k%p-c5&n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
-    'rest_framework_swagger',
+    'drf_yasg',
     'core',
     'api',
     'django_loader_dumper',
