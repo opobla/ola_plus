@@ -16,17 +16,10 @@ class OrganizationalUnitInLineAdmin(admin.TabularInline):
 
 
 class HigherEducationInstitutionAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "email", "origin"]
+    list_display = ["id", "name", "email"]
     ordering = ['name']
     search_fields = ['name']
-    autocomplete_fields = ['origin']
     inlines = [OrganizationalUnitInLineAdmin, ]
-
-
-class HigherEducationInstitutionOriginAdmin(admin.ModelAdmin):
-    list_display = ["id", "name"]
-    ordering = ['name']
-    search_fields = ['name']
 
 
 class OrganizationalUnitAdmin(admin.ModelAdmin):
@@ -44,6 +37,5 @@ class LearningOpportunitySpecificationAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.HigherEducationInstitution, HigherEducationInstitutionAdmin)
-admin.site.register(models.HigherEducationInstitutionOrigin, HigherEducationInstitutionOriginAdmin)
 admin.site.register(models.OrganizationalUnit, OrganizationalUnitAdmin)
 admin.site.register(models.LearningOpportunitySpecification, LearningOpportunitySpecificationAdmin)
