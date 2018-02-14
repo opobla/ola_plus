@@ -9,19 +9,10 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class HigherEducationInstitutionOrigin(BaseModel):
-
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
 class HigherEducationInstitution(BaseModel):
 
     name = models.CharField(max_length=255)
     email = models.EmailField()
-    origin = models.ForeignKey(HigherEducationInstitutionOrigin, on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
         return self.name
