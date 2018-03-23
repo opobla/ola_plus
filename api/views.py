@@ -27,7 +27,7 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
     """
     Organizational Unit List.
 
-    **It's mandatory to provide an Higher Education Institution UUID.**
+    **It's mandatory to provide an Organizational Unit UUID.**
 
     Dynamic Organizational Unit's name filter can be added with `q` parameter.
     """
@@ -38,7 +38,7 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset\
-            .filter(higher_education_institution_id=self.kwargs["id"]) \
+            .filter(id=self.kwargs["id"]) \
             .order_by('name')
 
 
@@ -59,3 +59,31 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
         return self.queryset \
             .filter(organizational_unit_id=self.kwargs["id"]) \
             .order_by('title')
+
+
+class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
+    """
+    Organizational Unit List.
+
+    **It's mandatory to provide an Higher Education Institution UUID.**
+
+    Dynamic Organizational Unit's name filter can be added with `q` parameter.
+    """
+    serializer_class = serializers.NestedOrganizationalUnitSerializer
+    queryset = HigherEducationInstitution.objects.all()
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', )
+
+    def get_queryset(self):
+        return self.queryset\
+            .filter(id=self.kwargs["id"]) \
+            .order_by('name')
+
+    def get_serializer_context(self):
+        """
+        Add hei id to serializer context
+        """
+        if 'id' in self.kwargs:
+            return {'id': self.kwargs["id"]}
+
+        return {}
