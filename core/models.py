@@ -12,7 +12,7 @@ class BaseModel(models.Model):
 class HigherEducationInstitution(BaseModel):
 
     name = models.CharField(max_length=255, unique=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
 
     def __str__(self):
         return self.name
