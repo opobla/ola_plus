@@ -71,8 +71,6 @@ class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
     """
     serializer_class = serializers.NestedOrganizationalUnitSerializer
     queryset = HigherEducationInstitution.objects.all()
-    filter_backends = (filters.SearchFilter, )
-    search_fields = ('name', )
 
     def get_queryset(self):
         return self.queryset\
