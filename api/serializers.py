@@ -51,7 +51,8 @@ class FilteredListSerializer(serializers.ListSerializer):
 class OrganizationalUnitSerializer(serializers.ModelSerializer):
     los = LearningOpportunitySpecificationSerializer(many=True, read_only=True, required=False)
     ounits = RecursiveField(many=True, read_only=False, required=False)
-    higher_education_institution = serializers.PrimaryKeyRelatedField(required=False, queryset=HigherEducationInstitution.objects.all())
+    higher_education_institution = serializers.PrimaryKeyRelatedField(required=False,
+                                                                      queryset=HigherEducationInstitution.objects.all())
     parent = serializers.PrimaryKeyRelatedField(required=False, queryset=OrganizationalUnit.objects.all())
 
     class Meta:
@@ -128,3 +129,12 @@ class NestedOrganizationalUnitSerializer(serializers.ModelSerializer):
                     ounit_serializer.save()
 
         return hei
+
+
+class LearningOpportunitySpecificationDistinctSerializer(serializers.ModelSerializer):
+    academic_term = serializers.ListField()
+    credit_value = serializers.ListField()
+
+    class Meta(object):
+        model = LearningOpportunitySpecification
+        fields = ['academic_term', 'credit_value']

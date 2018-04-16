@@ -1,6 +1,8 @@
 from rest_framework import viewsets, filters
+import django_filters
 from . import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
+from rest_framework.response import Response
 
 
 class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
@@ -42,6 +44,21 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
             .order_by('name')
 
 
+class LosFilter(django_filters.rest_framework.FilterSet):
+    title = django_filters.rest_framework.CharFilter(field_name='title', lookup_expr='ilike')
+    isced_code = django_filters.rest_framework.NumberFilter(field_name='isced_code', lookup_expr='startswith')
+    academic_term = django_filters.rest_framework.NumberFilter(name='academic_term', lookup_expr='iexact')
+    start_date_before = django_filters.rest_framework.DateFilter(name='start_date', lookup_expr='lte')
+    start_date_after = django_filters.rest_framework.DateFilter(name='start_date', lookup_expr='gte')
+    end_date_before = django_filters.rest_framework.DateFilter(name='end_date', lookup_expr='lte')
+    end_date_after = django_filters.rest_framework.DateFilter(name='end_date', lookup_expr='gte')
+
+    class Meta:
+        model = LearningOpportunitySpecification
+        fields = ['title', 'isced_code', 'credit_value', 'academic_term', 'start_date_before', 'start_date_after',
+                  'end_date_before', 'end_date_after']
+
+
 class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
     """
     Learning Opportunity Specification List.
@@ -52,8 +69,8 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
     """
     serializer_class = serializers.LearningOpportunitySpecificationSerializer
     queryset = LearningOpportunitySpecification.objects.all().order_by('title')
-    filter_backends = (filters.SearchFilter, )
-    search_fields = ('title', )
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+    filter_class = LosFilter
 
     def get_queryset(self):
         return self.queryset \
@@ -77,6 +94,11 @@ class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
             .filter(id=self.kwargs["id"]) \
             .order_by('name')
 
+    def destroy(self, request, id=None):
+        query = self.queryset.filter(id=id)
+        query.delete()
+        return Response()
+
     def get_serializer_context(self):
         """
         Add hei id to serializer context
@@ -85,3 +107,17 @@ class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
             return {'id': self.kwargs["id"]}
 
         return {}
+
+
+class LosFiltersViewSet(viewsets.ViewSet):
+    queryset = LearningOpportunitySpecification.objects.all()
+
+    serializer_class = serializers.LearningOpportunitySpecificationDistinctSerializer
+
+    def list(self, request):
+        academic_term = LearningOpportunitySpecification.objects.values_list('academic_term', flat=True) \
+                                                                .order_by('academic_term').distinct()
+        credit_value = LearningOpportunitySpecification.objects.values_list('credit_value', flat=True) \
+                                                               .order_by('credit_value').distinct()
+
+        return Response({'academic_term': list(academic_term), 'credit_value': list(credit_value)})
