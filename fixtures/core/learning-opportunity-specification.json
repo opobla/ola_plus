@@ -4,12 +4,16 @@
     "pk": "0c93124c-5e7a-407b-bd3f-51efb05d8708",
     "fields": {
         "organizational_unit": "46562902-e252-4d55-a82e-39efec61754a",
+        "code": "COD1",
         "title": "Sistemas Operativos",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
     }
 },
 {
@@ -17,12 +21,16 @@
     "pk": "90e63e7a-66bd-4547-8e98-3f7f72db4024",
     "fields": {
         "organizational_unit": "46562902-e252-4d55-a82e-39efec61754a",
+        "code": "COD2",
         "title": "Operative systems",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
     }
 },
 {
@@ -30,12 +38,17 @@
     "pk": "57abd5ae-f556-4514-ab1e-a758acbf01a4",
     "fields": {
         "organizational_unit": "e0ba3187-cf1b-4d57-9d37-f4d8575db690",
+        "code": "COD3",
         "title": "The Queen of Mathematics: Introduction to Number Theory",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -43,12 +56,17 @@
     "pk": "fc62f48c-34d5-4ed8-8359-a6f20f9adc66",
     "fields": {
         "organizational_unit": "cf01c5c2-52ce-4422-9853-901f7e8d08ae",
+        "code": "COD4",
         "title": "Data Science with Python",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -56,12 +74,17 @@
     "pk": "e26d31b1-ff89-4a64-8be5-acae288ef4cc",
     "fields": {
         "organizational_unit": "cf01c5c2-52ce-4422-9853-901f7e8d08ae",
+        "code": "COD5",
         "title": "Introduction to Web Programming",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -69,12 +92,17 @@
     "pk": "fa71c2ed-6b6a-42e5-92e5-5d6784f46ffa",
     "fields": {
         "organizational_unit": "c79f46a3-2650-4473-9280-b823716369a6",
+        "code": "COD6",
         "title": "DNA Sequencing and the Genomics Revolution",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -82,12 +110,17 @@
     "pk": "5788508b-c884-48a7-8366-18aea9f59495",
     "fields": {
         "organizational_unit": "1236e4b7-4f45-4ffb-8aa5-b590be25fece",
+        "code": "COD7",
         "title": "Introduction to Cancer: Diving into Research",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -95,12 +128,17 @@
     "pk": "04eb58bd-a744-400c-a7ff-d67716c5dae7",
     "fields": {
         "organizational_unit": "08a2e68a-f672-41fb-bd7d-a7872aa1ac0d",
+        "code": "COD8",
         "title": "Digital Media: Society, Culture, and Economics",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -108,12 +146,17 @@
     "pk": "5ad910fc-ca8b-476d-b6eb-6b21c158034d",
     "fields": {
         "organizational_unit": "1236e4b7-4f45-4ffb-8aa5-b590be25fece",
+        "code": "COD9",
         "title": "Darwin: Evolution and Social Movements",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 },
 {
@@ -121,12 +164,17 @@
     "pk": "3d62f38f-47f1-4625-adf7-e4734081db3b",
     "fields": {
         "organizational_unit": "e0ba3187-cf1b-4d57-9d37-f4d8575db690",
+        "code": "COD10",
         "title": "Chaos, Fractals and Geometry",
         "area": null,
         "isced_code": null,
         "credit_scheme": null,
         "credit_level": null,
-        "credit_value": null
+        "credit_value": null,
+        "academic_term": null,
+        "start_date": null,
+        "end_date": null
+
     }
 }
 ]

@@ -4,6 +4,7 @@
     "pk": "469d5fd8-8cd4-43ed-962f-d11f83724d8a",
     "fields": {
         "name": "Escuela Polit\u00e9cnica",
+        "code": "COD1",
         "higher_education_institution": "2425ee1e-0c48-4231-b3c5-58a210a80888",
         "parent": null
     }
@@ -13,6 +14,7 @@
     "pk": "46562902-e252-4d55-a82e-39efec61754a",
     "fields": {
         "name": "Departamento de Autom\u00e1tica",
+        "code": "COD2",
         "higher_education_institution": "2425ee1e-0c48-4231-b3c5-58a210a80888",
         "parent": "469d5fd8-8cd4-43ed-962f-d11f83724d8a"
     }
@@ -22,6 +24,7 @@
     "pk": "7aabf6a1-5e66-4059-b6f0-f9d61b5fb959",
     "fields": {
         "name": "Medical School",
+        "code": "COD3",
         "higher_education_institution": "a9696808-d866-4fad-8a71-04ee7904a85c",
         "parent": null
     }
@@ -31,6 +34,7 @@
     "pk": "1236e4b7-4f45-4ffb-8aa5-b590be25fece",
     "fields": {
         "name": "Department of Surgery",
+        "code": "COD4",
         "higher_education_institution": "a9696808-d866-4fad-8a71-04ee7904a85c",
         "parent": "7aabf6a1-5e66-4059-b6f0-f9d61b5fb959"
     }
@@ -40,6 +44,7 @@
     "pk": "d2d63668-132c-4447-ac68-17636fc5335b",
     "fields": {
         "name": "High Technique School of Computer Engineering",
+        "code": "COD5",
         "higher_education_institution": "7ed7b4dc-b964-4c2b-bd87-f7237a6ec06a",
         "parent": null
     }
@@ -49,6 +54,7 @@
     "pk": "cf01c5c2-52ce-4422-9853-901f7e8d08ae",
     "fields": {
         "name": "Department of Computing",
+        "code": "COD6",
         "higher_education_institution": "7ed7b4dc-b964-4c2b-bd87-f7237a6ec06a",
         "parent": "d2d63668-132c-4447-ac68-17636fc5335b"
     }
@@ -58,6 +64,7 @@
     "pk": "08a2e68a-f672-41fb-bd7d-a7872aa1ac0d",
     "fields": {
         "name": "Department of Software",
+        "code": "COD7",
         "higher_education_institution": "7ed7b4dc-b964-4c2b-bd87-f7237a6ec06a",
         "parent": "d2d63668-132c-4447-ac68-17636fc5335b"
     }
@@ -67,6 +74,7 @@
     "pk": "8418e0e3-dfcc-45c8-85f4-1463c5ee2029",
     "fields": {
         "name": "Department of Computer's Science",
+        "code": "COD8",
         "higher_education_institution": "2425ee1e-0c48-4231-b3c5-58a210a80888",
         "parent": "469d5fd8-8cd4-43ed-962f-d11f83724d8a"
     }
@@ -76,6 +84,7 @@
     "pk": "c79f46a3-2650-4473-9280-b823716369a6",
     "fields": {
         "name": "Department of Pediatrics",
+        "code": "COD9",
         "higher_education_institution": "2425ee1e-0c48-4231-b3c5-58a210a80888",
         "parent": "7aabf6a1-5e66-4059-b6f0-f9d61b5fb959"
     }
@@ -85,6 +94,7 @@
     "pk": "e0ba3187-cf1b-4d57-9d37-f4d8575db690",
     "fields": {
         "name": "Department of Mathematics",
+        "code": "COD10",
         "higher_education_institution": "cbb2ec36-e999-4f4d-9955-972f9912d550",
         "parent": "d2d63668-132c-4447-ac68-17636fc5335b"
     }

@@ -5,7 +5,6 @@
     "fields": {
         "name": "University of Alcal\u00e1 Henares",
         "email": "uah@uah.es",
-        "origin": null
     }
 },
 {
@@ -14,7 +13,6 @@
     "fields": {
         "name": "University Rey Juan Carlos of Vic\u00e1lvaro",
         "email": "rjcv@rjcv.es",
-        "origin": null
     }
 },
 {
@@ -23,7 +21,6 @@
     "fields": {
         "name": "University Rey Juan Carlos of M\u00f3stoles",
         "email": "rjcm@rjcm.es",
-        "origin": null
     }
 },
 {
@@ -32,7 +29,6 @@
     "fields": {
         "name": "University Polit\u00e9cnica of Madrid",
         "email": "upm@upm.es",
-        "origin": null
     }
 },
 {
@@ -41,7 +37,6 @@
     "fields": {
         "name": "University Aut\u00f3noma",
         "email": "uam@uam.es",
-        "origin": null
     }
 },
 {
@@ -50,7 +45,6 @@
     "fields": {
         "name": "University Alfonso X El Sabio",
         "email": "uaxs@uaxs.es",
-        "origin": null
     }
 },
 {
@@ -59,7 +53,6 @@
     "fields": {
         "name": "University Complutense",
         "email": "ucm@ucm.es",
-        "origin": null
     }
 },
 {
@@ -68,7 +61,6 @@
     "fields": {
         "name": "University San Pablo CEU",
         "email": "uceu@uceu.es",
-        "origin": null
     }
 },
 {
@@ -77,7 +69,6 @@
     "fields": {
         "name": "University Carlos III",
         "email": "uc3@uc3.es",
-        "origin": null
     }
 },
 {
@@ -86,7 +77,6 @@
     "fields": {
         "name": "University Europea of Madrid",
         "email": "uem@uem.es",
-        "origin": null
     }
 }
 ]
