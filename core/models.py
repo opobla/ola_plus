@@ -22,11 +22,8 @@ class OrganizationalUnit(BaseModel):
 
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=255)
-    higher_education_institution = models.ForeignKey(HigherEducationInstitution, on_delete=models.DO_NOTHING, related_name='ounits')
-    parent = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True, blank=True, related_name='ounits')
-
-    class Meta:
-        unique_together = ('parent', 'higher_education_institution', 'code')
+    higher_education_institution = models.ForeignKey(HigherEducationInstitution, on_delete=models.CASCADE, related_name='ounits')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='ounits')
 
     def __str__(self):
         return self.name
@@ -34,7 +31,7 @@ class OrganizationalUnit(BaseModel):
 
 class LearningOpportunitySpecification(BaseModel):
 
-    organizational_unit = models.ForeignKey(OrganizationalUnit, on_delete=models.DO_NOTHING, null=True, blank=True, related_name='los')
+    organizational_unit = models.ForeignKey(OrganizationalUnit, on_delete=models.CASCADE, null=True, blank=True, related_name='los')
     code = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     area = models.CharField(max_length=255, blank=True, null=True)
