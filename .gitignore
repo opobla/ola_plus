@@ -1,31 +1,72 @@
-# IDEs
-.idea/
+#### joe made this: http://goel.io/joe
 
-#Virtualenv
-env/
-
-# Local dev environment
-settings/local.py
-
-# Databases
-*.db
-db.*
+#####=== Python ===#####
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Logs
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
 *.log
-*.log.*
 
-# Generic files to ignore
-*~
-*.lock
-*.DS_Store
-*.swp
-*.out
-*.swo
+# Sphinx documentation
+docs/_build/
 
-static
-www
+# PyBuilder
+target/
+
+#Project template-uservice
+venv/
+.env
+.coverage
+cover/
+.idea/
+*.sql
+*.sqlite3
+data_redis/

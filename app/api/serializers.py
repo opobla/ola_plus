@@ -12,6 +12,12 @@ class HigherEducationInstitutionSerializer(serializers.ModelSerializer):
 
 class LearningOpportunitySpecificationSerializer(serializers.ModelSerializer):
 
+    '''
+    def __init__(self, *args, **kwargs):
+        many = kwargs.pop('many', True)
+        super(OrganizationalUnitSerializer, self).__init__(many=many, *args, **kwargs)
+    '''
+
     class Meta:
         model = LearningOpportunitySpecification
         fields = '__all__'

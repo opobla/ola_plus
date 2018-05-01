@@ -1,0 +1,28 @@
+version: '2'
+services:
+  db:
+    image: mysql:latest
+    env_file:
+      - .env
+    expose:
+      - "3306"
+
+  redis:
+    image: redis:latest
+    expose:
+      - "6379"
+    volumes:
+      - ./data_redis:/data
+
+  web:
+    build: .
+    container_name: olaplus-api-uservice
+    image: olaplus-api-uservice:latest
+    working_dir: /local/app
+    env_file:
+      - .env
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./:/local
+    ports:
+      - "8000:8000"
