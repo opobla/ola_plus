@@ -70,3 +70,6 @@ cover/
 *.sql
 *.sqlite3
 data_redis/
+
+# Sphynx
+app/docs/_*
