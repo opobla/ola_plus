@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
+from django.core.exceptions import ValidationError
 
 
 class HigherEducationInstitutionSerializer(serializers.ModelSerializer):
@@ -117,7 +118,10 @@ class NestedOrganizationalUnitSerializer(serializers.ModelSerializer):
             if 'ounits' in new_ounit:
                 subounits = new_ounit.pop('ounits')
 
-            parent_ounit = hei.ounits.create(**new_ounit)
+            try:
+                parent_ounit = hei.ounits.create(**new_ounit)
+            except ValidationError as ve:
+                raise serializers.ValidationError(ve.message)
 
             for subounit in subounits:
                 subounit['higher_education_institution'] = hei_id
@@ -125,8 +129,11 @@ class NestedOrganizationalUnitSerializer(serializers.ModelSerializer):
 
             if subounits:
                 ounit_serializer = NestedOrganizationalUnitSerializer(data={'ounits': subounits})
-                if ounit_serializer.is_valid():
-                    ounit_serializer.save()
+                try:
+                    if ounit_serializer.is_valid(raise_exception=True):
+                        ounit_serializer.save()
+                except ValidationError as ve:
+                    raise serializers.ValidationError(ve.message)
 
         return hei
 

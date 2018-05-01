@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 import uuid
 
 
@@ -24,6 +25,15 @@ class OrganizationalUnit(BaseModel):
     code = models.CharField(max_length=255)
     higher_education_institution = models.ForeignKey(HigherEducationInstitution, on_delete=models.CASCADE, related_name='ounits')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='ounits')
+
+    def validate_unique(self, exclude=None):
+        qs = OrganizationalUnit.objects.filter(code=self.code)
+        if qs.filter(parent=self.parent, higher_education_institution=self.higher_education_institution).exists():
+            raise ValidationError('Organizational unit with same higher_education_institution, parent and code is not allowed')
+
+    def save(self, *args, **kwargs):
+        self.validate_unique()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

@@ -45,9 +45,9 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
 
 
 class LosFilter(django_filters.rest_framework.FilterSet):
-    title = django_filters.rest_framework.CharFilter(field_name='title', lookup_expr='ilike')
+    title = django_filters.rest_framework.CharFilter(field_name='title', lookup_expr='icontains')
     isced_code = django_filters.rest_framework.NumberFilter(field_name='isced_code', lookup_expr='startswith')
-    academic_term = django_filters.rest_framework.NumberFilter(name='academic_term', lookup_expr='iexact')
+    academic_term = django_filters.rest_framework.CharFilter(name='academic_term', lookup_expr='iexact')
     start_date_before = django_filters.rest_framework.DateFilter(name='start_date', lookup_expr='lte')
     start_date_after = django_filters.rest_framework.DateFilter(name='start_date', lookup_expr='gte')
     end_date_before = django_filters.rest_framework.DateFilter(name='end_date', lookup_expr='lte')
