@@ -25,7 +25,7 @@ SECRET_KEY = 'c^brxtvc+n!21px1mxr!ksn9rq8kp8l=51ko1915!8k%p-c5&n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'api',
     'django_loader_dumper',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'token': {
             'type': 'apiKey',
-            'name': 'AUTHORIZATION',
+            'name': 'Authorization',
             'in': 'header',
         }
     },
@@ -159,6 +160,9 @@ REST_FRAMEWORK = {
         'anon': '1000/s',
         'user': '10000/s',
     },
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 STATIC_ROOT = 'static'

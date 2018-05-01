@@ -22,7 +22,7 @@ class HigherEducationInstitution(BaseModel):
 class OrganizationalUnit(BaseModel):
 
     name = models.CharField(max_length=255)
-    code = models.CharField(max_length=255)
+    code = models.CharField(max_length=255, default=None)
     higher_education_institution = models.ForeignKey(HigherEducationInstitution, on_delete=models.CASCADE, related_name='ounits')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='ounits')
 
@@ -42,7 +42,7 @@ class OrganizationalUnit(BaseModel):
 class LearningOpportunitySpecification(BaseModel):
 
     organizational_unit = models.ForeignKey(OrganizationalUnit, on_delete=models.CASCADE, null=True, blank=True, related_name='los')
-    code = models.CharField(max_length=255)
+    code = models.CharField(max_length=255, default=None)
     title = models.CharField(max_length=255)
     area = models.CharField(max_length=255, blank=True, null=True)
     isced_code = models.CharField(max_length=255, blank=True, null=True)

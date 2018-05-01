@@ -1,5 +1,7 @@
 from rest_framework import viewsets, filters
 import django_filters
+from rest_framework.permissions import IsAuthenticated
+
 from . import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
 from rest_framework.response import Response
@@ -23,6 +25,14 @@ class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
     queryset = HigherEducationInstitution.objects.all().order_by('name')
     filter_backends = (filters.SearchFilter, )
     search_fields = ('name', )
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            pass
+        else:
+            self.permission_classes = [IsAuthenticated, ]
+
+        return super(viewsets.ModelViewSet, self).get_permissions()
 
 
 class OrganizationalUnitViewSet(viewsets.ModelViewSet):
