@@ -1,5 +1,8 @@
+.. _admin-interface:
+
+===================
 The Admin interface
-==================
+===================
 
 A very basic administration interface has been provided, mainly to manage the entities (HEI and LOS) and to manage
 authorized users.
@@ -21,3 +24,8 @@ tokens, managing entities, etc. API users are not allowed in the admin panel, bu
 API, therefore they can post new HEI's and LOS's, define organizational units structure, etc.
 
 The users and their operations are only available from the administration panel. They are not exposed in the API.
+
+.. _managing-authentication-tokens:
+
+Managing authentication tokens
+------------------------------

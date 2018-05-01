@@ -164,3 +164,11 @@ texinfo_documents = [
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+admin_url = 'http://0.0.0.0:8000/admin'
+swagger_url = 'http://0.0.0.0:8000'
+
+rst_prolog = """
+.. |swagger_url| replace:: {0}
+.. |admin_url| replace:: {1}
+""".format(swagger_url, admin_url)

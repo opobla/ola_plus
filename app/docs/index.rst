@@ -1,6 +1,6 @@
 Welcome to API OLA+'s documentation!
 ================================
-This is doc for the OLA+ Restfull API.
+This is doc for the OLA+ Restful API.
 
 The core of the API is the management of two entities: Higher Education Institutions (HEI), Learning Opportunities
 Specification (LOS), and the relationship between them.
@@ -14,6 +14,8 @@ this end.
    :maxdepth: 2
    :caption: Contents:
 
+   operations
+   api-swagger
    admin
    authentication
 
