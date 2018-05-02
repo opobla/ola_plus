@@ -165,8 +165,8 @@ texinfo_documents = [
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-admin_url = 'http://0.0.0.0:8000/admin'
-swagger_url = 'http://0.0.0.0:8000'
+admin_url = 'https://ola.i2tic.com/admin'
+swagger_url = 'https://ola.i2tic.com'
 
 rst_prolog = """
 .. |swagger_url| replace:: {0}

@@ -73,3 +73,5 @@ data_redis/
 
 # Sphynx
 app/docs/_*
+app/static/
+www
