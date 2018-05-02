@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'OLA+ API'
-copyright = '2018, Óscar García, Óscar López'
-author = 'Óscar García, Óscar López'
+copyright = '2018, Ingeniería para la Innovación i2TIC'
+author = 'Óscar García, Marta Casa, Óscar López'
 
 # The short X.Y version
 version = ''
@@ -132,7 +132,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'OLA.tex', 'OLA+ Documentation',
-     'Óscar García, Óscar López', 'manual'),
+     'Óscar García, Marta Casa, Óscar López', 'manual'),
 ]
 
 

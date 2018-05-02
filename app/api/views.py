@@ -53,6 +53,14 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
             .filter(id=self.kwargs["id"]) \
             .order_by('name')
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            pass
+        else:
+            self.permission_classes = [IsAuthenticated, ]
+
+        return super(viewsets.ModelViewSet, self).get_permissions()
+
 
 class LosFilter(django_filters.rest_framework.FilterSet):
     title = django_filters.rest_framework.CharFilter(field_name='title', lookup_expr='icontains')
@@ -87,6 +95,14 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
             .filter(organizational_unit_id=self.kwargs["id"]) \
             .order_by('title')
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            pass
+        else:
+            self.permission_classes = [IsAuthenticated, ]
+
+        return super(viewsets.ModelViewSet, self).get_permissions()
+
 
 class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
     """
@@ -117,6 +133,14 @@ class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
             return {'id': self.kwargs["id"]}
 
         return {}
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            pass
+        else:
+            self.permission_classes = [IsAuthenticated, ]
+
+        return super(viewsets.ModelViewSet, self).get_permissions()
 
 
 class LosFiltersViewSet(viewsets.ViewSet):
