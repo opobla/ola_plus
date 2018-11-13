@@ -6,7 +6,6 @@ from . import serializers
 from core.models import HigherEducationInstitution, LearningOpportunitySpecification, OrganizationalUnit
 from rest_framework.response import Response
 
-
 class HigherEducationInstitutionModelViewSet(viewsets.ModelViewSet):
     """
     Higher Education Institutions.
@@ -61,6 +60,17 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
 
         return super(viewsets.ModelViewSet, self).get_permissions()
 
+    def delete_los_from_ounit(self, ounit_id):
+        return Response("lolo", 200)
+
+
+class OrganizationalUnitLos(viewsets.ViewSet):
+    permission_classes = [IsAuthenticated, ]
+
+    def delete_los_from_ounit(self, request, ounit_id=None, *args, **kwargs):
+        LearningOpportunitySpecification.objects.filter(
+            organizational_unit="b3e24a6f-2b2e-4fd7-a500-c4570d2778b7").delete()
+        return Response("LOS for {} deleted".format(ounit_id), 200)
 
 class LosFilter(django_filters.rest_framework.FilterSet):
     title = django_filters.rest_framework.CharFilter(field_name='title', lookup_expr='icontains')

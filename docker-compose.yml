@@ -21,11 +21,11 @@ services:
     working_dir: /local/app
     env_file:
       - .env
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && uwsgi --http :8000 --module ola_plus.wsgi:application --check-static /static"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:80"
     volumes:
       - ./:/local
     ports:
-      - "8000:8000"
+      - "8000:80"
 
   doc:
     build: .
