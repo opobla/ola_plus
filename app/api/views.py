@@ -63,6 +63,11 @@ class OrganizationalUnitViewSet(viewsets.ModelViewSet):
     def delete_los_from_ounit(self, ounit_id):
         return Response("lolo", 200)
 
+    def destroy(self, request, id=None):
+        query = self.queryset.filter(id=id)
+        query.delete()
+        return Response()
+
 
 class OrganizationalUnitLos(viewsets.ViewSet):
     permission_classes = [IsAuthenticated, ]
