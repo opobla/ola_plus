@@ -23,6 +23,12 @@
             attribute: 'des_plan',
         })
     );
+    search.addWidget(
+        instantsearch.widgets.refinementList({
+            container: '#hei',
+            attribute: 'hei',
+        })
+    );
 
     search.addWidget(
         instantsearch.widgets.hits({
