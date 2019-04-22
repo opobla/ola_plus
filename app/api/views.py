@@ -140,6 +140,9 @@ class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.NestedOrganizationalUnitSerializer
     queryset = HigherEducationInstitution.objects.all()
 
+    def create(self, request, id):
+        return super( OrganizationalUnitTreeViewSet, self).create(request, id)
+
     def get_queryset(self):
         return self.queryset\
             .filter(id=self.kwargs["id"]) \
