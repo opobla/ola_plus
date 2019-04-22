@@ -75,3 +75,4 @@ data_redis/
 app/docs/_*
 app/static/
 www
+.DS_Store

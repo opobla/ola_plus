@@ -19,6 +19,10 @@ from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
+from demo_algolia.views import InstantSearchView
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 schema_view = get_schema_view(
    openapi.Info(title="OLA+ API",
@@ -40,4 +44,9 @@ urlpatterns = [
 
     path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
+    path('demo/', InstantSearchView.as_view(template_name="instant_search_view.html")),
 ]
+
+if settings.DEBUG:
+    pass
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

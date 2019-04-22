@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'core',
     'api',
     'django_loader_dumper',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'demo_algolia'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'ola_plus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['demo_algolia'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -167,4 +168,4 @@ REST_FRAMEWORK = {
     )
 }
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = '/static/'
