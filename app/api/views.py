@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets, filters
 import django_filters
 from rest_framework.permissions import IsAuthenticated
@@ -74,9 +75,25 @@ class OrganizationalUnitLos(viewsets.ViewSet):
     permission_classes = [IsAuthenticated, ]
 
     def delete_los_from_ounit(self, request, ounit_id=None, *args, **kwargs):
-        LearningOpportunitySpecification.objects.filter(
-            organizational_unit="b3e24a6f-2b2e-4fd7-a500-c4570d2778b7").delete()
-        return Response("LOS for {} deleted".format(ounit_id), 200)
+        ounit = None
+
+        try:
+            ounit=OrganizationalUnit.objects.get(id=ounit_id)
+        except ObjectDoesNotExist:
+            return Response({
+                "status": "ko",
+                "ounit": ounit_id,
+                "error": "Does not exists"
+            }, 404)
+
+        i, _ = LearningOpportunitySpecification.objects.filter(
+            organizational_unit=ounit).delete()
+
+        return  Response({
+            "status": "ok",
+            "ounit": ounit_id,
+            "deleted": i
+        }, 200)
 
 
 class HeiFilter(django_filters.rest_framework.Filter):
@@ -127,6 +144,22 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
             self.permission_classes = [IsAuthenticated, ]
 
         return super(viewsets.ModelViewSet, self).get_permissions()
+
+    def get_object(self):
+        if self.request.method == 'PUT':
+            obj, created = LearningOpportunitySpecification.objects.get_or_create(
+                organizational_unit=self.request.data.get('organizational_unit',None),
+                code=self.request.data.get('code', None),
+                defaults=self.request.data
+            )
+            return obj
+        else:
+            return super(LearningOpportunitySpecificationModelViewSet, self).get_object()
+
+    def update(self, request, *args, **kwargs):
+        return super(LearningOpportunitySpecificationModelViewSet,
+                     self).update(request, *args, **kwargs)
+        pass
 
 
 class OrganizationalUnitTreeViewSet(viewsets.ModelViewSet):
@@ -183,3 +216,15 @@ class LosFiltersViewSet(viewsets.ViewSet):
                                                                .order_by('credit_value').distinct()
 
         return Response({'academic_term': list(academic_term), 'credit_value': list(credit_value)})
+
+
+class ExportViewSet(viewsets.ViewSet):
+    queryset = LearningOpportunitySpecification.objects.all()
+
+    def list(self, request):
+        for los in self.queryset:
+            response = [
+                los.organizational_unit.higher_education_institution.name,
+                los.organizational_unit.name,
+                los.title]
+            return Response(",".join(response))
