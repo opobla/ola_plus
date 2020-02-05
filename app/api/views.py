@@ -147,10 +147,15 @@ class LearningOpportunitySpecificationModelViewSet(viewsets.ModelViewSet):
 
     def get_object(self):
         if self.request.method == 'PUT':
+            ou_id = self.request.data.get('organizational_unit', None)
+            ou = OrganizationalUnit.objects.get(id=ou_id)
+            assert ou
+            data = self.request.data.copy()
+            data['organizational_unit'] = ou
             obj, created = LearningOpportunitySpecification.objects.get_or_create(
-                organizational_unit=self.request.data.get('organizational_unit',None),
-                code=self.request.data.get('code', None),
-                defaults=self.request.data
+                organizational_unit=ou,
+                code=data.get('code', None),
+                defaults=data
             )
             return obj
         else:

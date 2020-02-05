@@ -48,7 +48,7 @@ class LearningOpportunitySpecification(BaseModel):
     isced_code = models.CharField(max_length=255, blank=True, null=True)
     credit_scheme = models.CharField(max_length=255, blank=True, null=True)
     credit_level = models.CharField(max_length=255, blank=True, null=True)
-    credit_value = models.IntegerField(blank=True, null=True)
+    credit_value = models.CharField(max_length=255, blank=True, null=True)
     academic_term = models.CharField(max_length=255, blank=True, null=True)
     start_date = models.DateField(auto_now=False, blank=True, null=True)
     end_date = models.DateField(auto_now=False, blank=True, null=True)
